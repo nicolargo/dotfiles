@@ -1,0 +1,50 @@
+# Colors
+NoColor="\033[0m"
+Cyan="\033[0;36m"
+Green="\033[0;32m"
+Red="\033[0;31m" 
+Yellow="\033[0;33m"
+
+# Chars
+RootPrompt="#"
+NonRootPrompt="$"
+
+# Contextual prompt
+prompt() {
+	USERNAME=`whoami`
+	HOSTNAME=`hostname`
+	CURRENTPATH=`pwd`
+
+	LEFTPROMPT=$Cyan$USERNAME@$HOSTNAME":"$Yellow$CURRENTPATH
+	let LEFTSIZE=$(echo -n "$USERNAME@$HOSTNAME:$CURRENTPATH" | wc -c)
+
+	RIGHTPROMPT=""
+	let RIGHTSIZE=0
+	GITSTATUS=$(git status 2> /dev/null)
+	#echo $GITSTATUS > /dev/null 2>&1 
+	if [ $? -eq 0 ]; then
+		echo $GITSTATUS | grep "not staged" > /dev/null 2>&1
+		if [ $? -eq 0 ]; then
+			RIGHTPROMPT=$Red
+		else
+			RIGHTPROMPT=$Green
+		fi
+		BRANCH=`git describe --contains --all HEAD`
+		RIGHTPROMPT=$RIGHTPROMPT"[Git branch "$BRANCH"]"
+		let RIGHTSIZE=$(echo -n "[Git branch "$BRANCH"]" | wc -c)
+	fi
+	let BLANCKSIZE=${COLUMNS}-${LEFTSIZE}-${RIGHTSIZE}
+	RIGHTPROMPT=$RIGHTPROMPT$NoColor
+
+	echo -e -n "\n"$LEFTPROMPT
+	printf "%$(($BLANCKSIZE))s"
+	echo -e $RIGHTPROMPT
+}
+
+# Main prompt 
+PROMPT_COMMAND=prompt
+if [ $EUID -ne 0 ]; then
+	PS1=$NonRootPrompt" "
+else
+	PS1=$RootPrompt" "
+fi
