@@ -13,7 +13,7 @@ NonRootPrompt="$"
 prompt() {
 	USERNAME=`whoami`
 	HOSTNAME=`hostname`
-	CURRENTPATH=`pwd`
+	CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
 
 	LEFTPROMPT=$Cyan$USERNAME@$HOSTNAME":"$Yellow$CURRENTPATH
 	let LEFTSIZE=$(echo -n "$USERNAME@$HOSTNAME:$CURRENTPATH" | wc -c)
