@@ -34,15 +34,15 @@ prompt() {
 		BRANCH=`git describe --contains --all HEAD`
 		LEFTPROMPT=$LEFTPROMPT"[Git branch "$BRANCH"]"
 	fi
-	LEFTPROMPT=$LEFTPROMPT$NoColor
 
-	echo -e -n $LEFTPROMPT
+	if [ $EUID -ne 0 ]; then
+		PS1=$LEFTPROMPT$NoColor" "$NonRootPrompt" "
+	else
+		PS1=$LEFTPROMPT$NoColor" "$RootPrompt" "
+	fi
+
+	# echo -e -n $LEFTPROMPT	
 }
 
 # Main prompt 
 PROMPT_COMMAND=prompt
-if [ $EUID -ne 0 ]; then
-	PS1=" "$NonRootPrompt" "
-else
-	PS1=" "$RootPrompt" "
-fi
