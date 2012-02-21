@@ -1,6 +1,3 @@
-# Thx to David Olivier for the SVN script
-# http://wiki.adadov.net/Prompt_Bash_avec_statut_SVN
-
 # Colors
 NoColor="\e[0;0m"
 Cyan="\e[0;36m"
@@ -47,12 +44,20 @@ prompt() {
 	echo -e $RIGHTPROMPT
 }
  
-# Main prompt
+# Define PROMPT_COMMAND if not already defined (fix: Modifying title on SSH connections)
 if [ -z "$PROMPT_COMMAND" ]; then
-	PROMPT_COMMAND=prompt
-else
-	PROMPT_COMMAND="prompt;$PROMPT_COMMAND"
+	case $TERM in
+	xterm*)
+		PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+	;;
+	screen)
+		PROMPT_COMMAND='printf "\033]0;%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+	;;
+	esac
 fi
+ 
+# Main prompt
+PROMPT_COMMAND="prompt;$PROMPT_COMMAND"
  
 if [ $EUID -ne 0 ]; then
 	PS1=$UserPrompt" "
