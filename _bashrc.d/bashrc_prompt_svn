@@ -1,0 +1,61 @@
+# Thx to David Olivier for the SVN script
+# http://wiki.adadov.net/Prompt_Bash_avec_statut_SVN
+
+# Colors
+NoColor="\e[0;0m"
+Cyan="\e[0;36m"
+Green="\e[0;32m"
+Red="\e[0;31m"
+Yellow="\e[0;33m"
+ 
+# Prompts chars
+UserPrompt="$"
+RootPrompt="#"
+ 
+# Contextual prompt
+prompt() {
+	USERNAME=`whoami`
+	HOSTNAME=`hostname`
+	CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
+ 
+	LEFTPROMPT=$Cyan$USERNAME@$HOSTNAME":"$Yellow$CURRENTPATH
+	let LEFTSIZE=$(echo -n "$USERNAME@$HOSTNAME:$CURRENTPATH" | wc -c)
+ 
+	RIGHTPROMPT=""
+	let RIGHTSIZE=0
+	if [ -d ".svn" ]; then
+		SVNSTATUS=$(svn status 2>&1)
+		echo $SVNSTATUS | grep 'not a working copy' 2>&1 > /dev/null
+		if [ $? -eq 1 ]; then
+			echo $SVNSTATUS | grep -P '^\s*[AMDCR]' 2>&1 > /dev/null
+			if [ $? -eq 0 ]; then
+				RIGHTPROMPT=$Red
+			else
+				RIGHTPROMPT=$Green
+			fi
+			BRANCH=$(svn info | grep 'Repository Root' | sed -r 's|^.*/([a-z]+)$|\1|')
+			RIGHTPROMPT=$RIGHTPROMPT"[SVN Repository $BRANCH]"
+			let RIGHTSIZE=$(echo -n "[SVN Repository $BRANCH]" | wc -c)
+		fi
+	fi
+ 
+	let BLANCKSIZE=${COLUMNS}-${LEFTSIZE}-${RIGHTSIZE}
+	RIGHTPROMPT=$RIGHTPROMPT$NoColor
+ 
+	echo -e -n "\n"$LEFTPROMPT
+	printf "%$(($BLANCKSIZE))s"
+	echo -e $RIGHTPROMPT
+}
+ 
+# Main prompt
+if [ -z "$PROMPT_COMMAND" ]; then
+	PROMPT_COMMAND=prompt
+else
+	PROMPT_COMMAND="prompt;$PROMPT_COMMAND"
+fi
+ 
+if [ $EUID -ne 0 ]; then
+	PS1=$UserPrompt" "
+else
+	PS1=$RootPrompt" "
+fi

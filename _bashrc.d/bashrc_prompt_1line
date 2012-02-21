@@ -6,8 +6,8 @@ Red="\033[0;31m"
 Yellow="\033[0;33m"
 
 # Chars
-RootPrompt="#"
-NonRootPrompt="$"
+RootPrompt="\#"
+NonRootPrompt="\$"
 
 # Contextual prompt
 prompt() {
