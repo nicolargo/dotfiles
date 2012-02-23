@@ -15,6 +15,7 @@
     use_system_font = False
     font = Monospace 8
     show_titlebar = False
+    cursor_color = "#b23030"
 [layouts]
   [[default]]
     [[[child1]]]
