@@ -11,8 +11,9 @@ NonRootPrompt="\$"
 
 # Contextual prompt
 prompt() {
+
 	USERNAME=`whoami`
-	HOSTNAME=`hostname`
+	HOSTNAME=`hostname -s`
 	#CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
 
 	# Change the Window title
@@ -21,24 +22,24 @@ prompt() {
 
 	# Change the dynamic prompt
 	#LEFTPROMPT="$Yellow$CURRENTPATH"
-	LEFTPROMPT="$Yellow\w"
+	LEFTPROMPT="\[$Cyan\]$USERNAME@$HOSTNAME":"\[$Yellow\]\w"
 
 	GITSTATUS=$(git status 2> /dev/null)
 	if [ $? -eq 0 ]; then
 		echo $GITSTATUS | grep "not staged" > /dev/null 2>&1
 		if [ $? -eq 0 ]; then
-			LEFTPROMPT=$LEFTPROMPT$Red
+			LEFTPROMPT=$LEFTPROMPT"\[$Red\]"
 		else
-			LEFTPROMPT=$LEFTPROMPT$Green
+			LEFTPROMPT=$LEFTPROMPT"\[$Green\]"
 		fi
 		BRANCH=`git describe --contains --all HEAD`
-		LEFTPROMPT=$LEFTPROMPT"[Git branch "$BRANCH"]"
+		LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
 	fi
 
 	if [ $EUID -ne 0 ]; then
-		PS1=$LEFTPROMPT$NoColor" "$NonRootPrompt" "
+		PS1=$LEFTPROMPT"\[$NoColor\] "$NonRootPrompt" "
 	else
-		PS1=$LEFTPROMPT$NoColor" "$RootPrompt" "
+		PS1=$LEFTPROMPT"\[$NoColor\] "$RootPrompt" "
 	fi
 
 	# echo -e -n $LEFTPROMPT	
