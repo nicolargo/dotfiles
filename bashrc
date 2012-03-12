@@ -1,8 +1,7 @@
 # Defined prompt only if is not already defined
 if [ ! -z "$PS1" ]; then
         if [ -r ~/.bashrc.d/bashrc_prompt_1line ]; then
-	        # source ~/.bashrc.d/bashrc_prompt
-	        source ~/.bashrc.d/bashrc_prompt_1line
+	        source ~/.bashrc.d/bashrc_prompt
 	fi
 fi
 

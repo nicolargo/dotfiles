@@ -6,39 +6,43 @@ Red="\033[0;31m"
 Yellow="\033[0;33m"
 
 # Chars
-RootPrompt="#"
-NonRootPrompt="$"
+RootPrompt="\#"
+NonRootPrompt="\$"
 
 # Contextual prompt
 prompt() {
+
 	USERNAME=`whoami`
-	HOSTNAME=`hostname`
-	CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
+	HOSTNAME=`hostname -s`
+	#CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
 
-	LEFTPROMPT=$Cyan$USERNAME@$HOSTNAME":"$Yellow$CURRENTPATH
-	let LEFTSIZE=$(echo -n "$USERNAME@$HOSTNAME:$CURRENTPATH" | wc -c)
+	# Change the Window title
+	WINDOWTITLE="$USERNAME@$HOSTNAME"
+	echo -ne "\033]0;$WINDOWTITLE\007"
 
-	RIGHTPROMPT=""
-	let RIGHTSIZE=0
+	# Change the dynamic prompt
+	#LEFTPROMPT="$Yellow$CURRENTPATH"
+	LEFTPROMPT="\[$Cyan\]$USERNAME@$HOSTNAME":"\[$Yellow\]\w"
+
 	GITSTATUS=$(git status 2> /dev/null)
-	#echo $GITSTATUS > /dev/null 2>&1 
 	if [ $? -eq 0 ]; then
 		echo $GITSTATUS | grep "not staged" > /dev/null 2>&1
 		if [ $? -eq 0 ]; then
-			RIGHTPROMPT=$Red
+			LEFTPROMPT=$LEFTPROMPT"\[$Red\]"
 		else
-			RIGHTPROMPT=$Green
+			LEFTPROMPT=$LEFTPROMPT"\[$Green\]"
 		fi
 		BRANCH=`git describe --contains --all HEAD`
-		RIGHTPROMPT=$RIGHTPROMPT"[Git branch "$BRANCH"]"
-		let RIGHTSIZE=$(echo -n "[Git branch "$BRANCH"]" | wc -c)
+		LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
 	fi
-	let BLANCKSIZE=${COLUMNS}-${LEFTSIZE}-${RIGHTSIZE}
-	RIGHTPROMPT=$RIGHTPROMPT$NoColor
 
-	echo -e -n "\n"$LEFTPROMPT
-	printf "%$(($BLANCKSIZE))s"
-	echo -e $RIGHTPROMPT
+	if [ $EUID -ne 0 ]; then
+		PS1=$LEFTPROMPT"\[$NoColor\] "$NonRootPrompt" "
+	else
+		PS1=$LEFTPROMPT"\[$NoColor\] "$RootPrompt" "
+	fi
+
+	# echo -e -n $LEFTPROMPT	
 }
 
 # Define PROMPT_COMMAND if not already defined (fix: Modifying title on SSH connections)
