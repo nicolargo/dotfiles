@@ -32,7 +32,8 @@ prompt() {
 		else
 			LEFTPROMPT=$LEFTPROMPT"\[$Green\]"
 		fi
-		BRANCH=`git describe --contains --all HEAD`
+		# BRANCH=`git describe --contains --all HEAD`
+		BRANCH=`git rev-parse --abbrev-ref HEAD`
 		LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
 	fi
 
