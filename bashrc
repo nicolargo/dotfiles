@@ -48,3 +48,8 @@ fi
 if [ -r ~/.bashrc.d/bashrc_aliases ]; then
         source ~/.bashrc.d/bashrc_aliases
 fi
+
+# Add PYTHONSTARTUP
+if [ -f ~/.pythonrc ]; then
+        export PYTHONSTARTUP=~/.pythonrc
+fi
