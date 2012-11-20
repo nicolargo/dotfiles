@@ -1,0 +1,8 @@
+[build-menu]
+FT_01_LB=Check
+FT_01_CM=~/bin/check-python-code.sh %f
+FT_01_WD=
+error_regex=([^:]+):([0-9]+):([0-9:]+)? .*
+
+[settings]
+context_action_cmd = python ~/bin/pydocw %s

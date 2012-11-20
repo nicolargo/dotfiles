@@ -1,0 +1,46 @@
+# For complete documentation of this file, please see Geany's main documentation
+[styling]
+# foreground;background;bold;italic
+default=0xff8000;0x000000;false;false
+comment=comment;0x000000;false;false
+msgid=0xff6600;0x000000;true;false
+msgid_text=0xff6600;0x000000;false;false
+msgstr=0xff8000;0x000000;true;false
+msgstr_text=0xff8000;0x000000;false;false
+msgctxt=0xff8000;0x000000;true;false
+msgctxt_text=0xff8000;0x000000;false;false
+#fuzzy=0xffa500;0x000000;true;false
+fuzzy=0xffffff;0x000000;true;false
+
+# the lexer don't support keywords
+
+
+[settings]
+# default extension used when saving files
+#extension=po
+
+# the following characters are these which a "word" can contains, see documentation
+#wordchars=_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+
+# if only single comment char is supported like # in this file, leave comment_close blank
+comment_open=#
+comment_close=
+
+# set to false if a comment character/string should start at column 0 of a line, true uses any
+# indentation of the line, e.g. setting to true causes the following on pressing CTRL+d
+	#command_example();
+# setting to false would generate this
+#	command_example();
+# This setting works only for single line comments
+comment_use_indent=true
+
+# context action command (please see Geany's main documentation for details)
+context_action_cmd=
+
+
+[build_settings]
+# %f will be replaced by the complete filename
+# %e will be replaced by the filename without extension
+# (use only one of it at one time)
+compiler=msgfmt --check --check-accelerators=_ "%f"
+
