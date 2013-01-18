@@ -66,7 +66,9 @@ fi
 # Defined prompt only if is not already defined
 if [ ! -z "$PS1" ]; then
         if [ -r ~/.bashrc.d/bashrc_prompt ]; then
-	        source ~/.bashrc.d/bashrc_prompt
+	        source ~/dev/liquidprompt/liquidprompt
+        elif [ -r ~/.bashrc.d/bashrc_prompt ]; then
+                source ~/.bashrc.d/bashrc_prompt
 	fi
 fi
 
