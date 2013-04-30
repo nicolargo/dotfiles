@@ -15,7 +15,7 @@
     "font_size": 10,
 
     // Valid options are "no_bold", "no_italic", "no_antialias", "gray_antialias",
-    // "subpixel_antialias" and "no_round" (OS X only)
+    // "subpixel_antialias", "no_round" (OS X only) and "directwrite" (Windows only)
     "font_options": [],
 
     // Characters that are considered to separate words
@@ -234,6 +234,10 @@
     // you'll need to place this line in your user settings to override it.
     "find_selected_text": true,
 
+    // When drag_text is enabled, clicking on selected text will begin a
+    // drag-drop operation
+    "drag_text": true,
+
     //
     // User Interface Settings
     //
@@ -248,7 +252,13 @@
     // Controls side bar animation when expanding or collapsing folders
     "tree_animation_enabled": true,
 
+    // Makes tabs with modified files more visible
+    "highlight_modified_tabs": false,
+
     "show_tab_close_buttons": true,
+
+    // Show folders in the side bar in bold
+    "bold_folder_labels": false,
 
     // OS X 10.7 only: Set to true to disable Lion style full screen support.
     // Sublime Text must be restarted for this to take effect.
@@ -279,10 +289,26 @@
     // dock icon, this controls if a new window is created or not.
     "open_files_in_new_window": true,
 
+    // OS X only: This controls if an empty window is created at startup or not.
+    "create_window_at_startup": true,
+
     // Set to true to close windows as soon as the last file is closed, unless
     // there's a folder open within the window. This is always enabled on OS X,
     // changing it here won't modify the behavior.
     "close_windows_when_empty": false,
+
+    // Show the full path to files in the title bar.
+    // On OS X, this value is overridden in the platform specific settings, so
+    // you'll need to place this line in your user settings to override it.
+    "show_full_path": true,
+
+    // Shows the Build Results panel when building. If set to false, the Build
+    // Results can be shown via the Tools/Build Results menu.
+    "show_panel_on_build": true,
+
+    // Preview file contents when clicking on a file in the side bar. Double
+    // clicking or editing the preview will open the file and assign it a tab.
+    "preview_on_click": true,
 
     // folder_exclude_patterns and file_exclude_patterns control which files
     // are listed in folders on the side bar. These can also be set on a per-

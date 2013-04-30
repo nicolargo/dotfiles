@@ -1,7 +1,12 @@
 {
-	"auto_upgrade_last_run": 1335363017,
 	"installed_packages":
 	[
-		"CoffeeScript"
+		"CoffeeScript",
+		"Color Highlighter",
+		"ColorPicker",
+		"Edit History",
+		"Package Control",
+		"Python Flake8 Lint",
+		"Wrap Plus"
 	]
 }

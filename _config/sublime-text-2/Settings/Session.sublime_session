@@ -1,13 +1,13 @@
 {
 	"folder_history":
 	[
+		"/home/nicolargo/dev/glances"
 	],
-	"last_window_id": 1,
+	"last_window_id": 2,
 	"settings":
 	{
-	},
-	"windows":
-	[
+		"new_window_height": 910.0,
+		"new_window_settings":
 		{
 			"auto_complete":
 			{
@@ -15,64 +15,38 @@
 				[
 				]
 			},
-			"buffers":
-			[
-				{
-					"file": "/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-12.04-cinnamon-postinstall.cfg",
-					"settings":
-					{
-						"buffer_size": 4686,
-						"line_ending": "Unix"
-					}
-				},
-				{
-					"contents": "#\n# Configuration file \n# for the script https://github.com/nicolargo/ubuntupostinstall\n#\n# Ubuntu version: 12.04\n# UI: Gnome Shell\n#\n\n\n# Actions to be executed before all the others steps\n[preactions]\naction_dummy = dpkg -l > /tmp/pkg-before.txt\n\n\n# The repos section \n# ppa_xxx = ppa:ppauser/ppaname > Add the ppa to the system\n# pkg_xxx = pkglist             > Add the package list to the system\n# url_xxx = reposurl            > Add the repository URL to the system \n# key_xxx = key                 > Add the repository key to the system \n[repos]\n# Gnome 3/Shell\nppa_gnome3_plugins = ppa:webupd8team/gnome3\npkg_gnome3 = gnome-shell gnome-tweak-tool gnome-documents conky-all ttf-ubuntu-font-family\npkg_gnome3_plugins = `apt-cache search gnome-shell-extension | awk '{ print $1 }' | xargs`\npkg_gnome3_mgse = mgse-bottompanel mgse-menu mgse-windowlist\n\n# Add themes for UI\n# Please configure default icons/theme in the gnome3|unity section\nppa_gnome3_themes_1 = ppa:webupd8team/themes\npkg_gnome3_themes_1 = boomerang-gtk-theme faenza-icon-theme\nppa_gnome3_themes_2 = ppa:satyajit-happy/themes\npkg_gnome3_themes_2 = orion-gtk-theme evolve-gtk-theme\n\n# Chromium browser (PPA NOT YET AVAILABLE FOR PRECISE)\n#ppa_chromium = ppa:chromium-daily/beta\npkg_chromium = chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra \n\n# Shutter screen capture\nppa_shutter = ppa:shutter\npkg_shutter = shutter\n\n# Tweak your system\nppa_tweak = ppa:tualatrix/ppa\npkg_tweak = ubuntu-tweak\n\n# Terminal the best terminal in the world (PPA NOT YET AVAILABLE FOR PRECISE)\n#ppa_terminator = ppa:gnome-terminator/ppa\npkg_terminator = terminator\n\n# Geany: Light IDE (PPA NOT YET AVAILABLE FOR PRECISE)\n#ppa_geany = ppa:geany-dev/ppa\npkg_geany = geany\n\n# Spotify (DID NOT WORK / SHOULD HAVE A LOOK)\n#url_spotify = http://repository.spotify.com stable non-free\n#key_spotify = 4E9CFF4E\n#pkg_spotify = spotify-client-qt\n\n# Dropbbox share/unshare script for Nautilus\nppa_dropboxshare = ppa:nilarimogard/webupd8\npkg_dropboxshare = dropbox-share\n\n# Jupiter (a must have for Laptop)\nppa_jupiter = ppa:webupd8team/jupiter\npkg_jupiter = jupiter\n\n# Handbrake (PPA NOT YET AVAILABLE FOR PRECISE)\n#ppa_handbrake = ppa:stebbins/handbrake-releases\n#pkg_handbrake = handbrake-gtk handbrake-cli\n\n# Marlin, another file browser\nppa_marlin = ppa:marlin-devs/marlin-daily\npkg_marlin = marlin marlin-plugin-dropbox marlin-plugin-ubuntuone\n\n# Nautilus extra actions\nppa_nautilusactionsextra = ppa:nae-team/ppa\npkg_nautilusactionsextra = nautilus-actions-extra\n\n# Darktable, deRAWtiser\nppa_darktable = ppa:pmjdebruijn/darktable-release\npkg_darktable = darktable\n\n# Sublime text 2 (sublime but not FOSS and beta)\nppa_sublime = ppa:webupd8team/sublime-text-2\npkg_sublime = sublime-text-2-beta\n\n# Glances\nppa_glances = ppa:arnaud-hartmann/glances-stable\npkg_glances = glances\n\n\n# The packages section\n# pkgname = pkglist > Add the pkglist to the system\n[packages]\nubuntu-restrictive = ubuntu-restricted-extras\ndevelopment = build-essential vim subversion git git-core rabbitvcs-nautilus anjuta textadept geany\nmultimedia = vlc x264 ffmpeg2theora oggvideotools istanbul shotwell mplayer hugin nautilus-image-converter pavucontrol gimp gimp-plugin-registry ogmrip transmageddon guvcview wavpack mppenc faac flac vorbis-tools faad lame nautilus-script-audio-convert cheese sound-juicer picard arista milkytracker mypaint libdvdread4\nnetwork = iftop ifstat iptraf wireshark tshark arp-scan htop netspeed nmap netpipe-tcp\nsystem = terminator preload lsb-core gparted lm-sensors compizconfig-settings-manager hardinfo fortune-mod libnotify-bin compiz-fusion-plugins-extra most tree\nsecurity = rkhunter chkrootkit cron-apt fail2ban\nweb = pidgin pidgin-facebookchat pidgin-plugin-pack flashplugin-downloader xchat ttf-mscorefonts-installer nautilus-dropbox xclip zenity\n\n\n# The Gnome3 configuration section\n# theme = themename         > Use the Gnome Shell theme themename\n# icons = iconsname         > Use the icons theme iconsname\n# cursors = cursorssname    > Use the cursors theme cursorsname \n# conky = cfgfile           > .conkyrc URL\n[gnome3]\ntheme = Boomerang\nicons = Faenza\n#cursors = DMZ-White\nconky = https://raw.github.com/nicolargo/ubuntupostinstall/master/conkyrc\n\n\n# The . files section\n# Download ans installa . file on the $HOME folder\n[dotfiles]\nbashrc = https://raw.github.com/nicolargo/dotfiles/master/bashrc\nbashrc_prompt = https://raw.github.com/nicolargo/dotfiles/master/_bashrc.d/bashrc_prompt\nbashrc_aliases = https://raw.github.com/nicolargo/dotfiles/master/_bashrc.d/bashrc_aliases\nvimrc = https://raw.github.com/vgod/vimrc/master/vimrc\nhtoprc = https://raw.github.com/nicolargo/dotfiles/master/htoprc\n\n\n# Actions to be executed after all the others steps\n[postactions]\naction_dummy = dpkg -l > /tmp/pkg-after.txt\n",
-					"file": "/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-12.04-gnomeshell-postinstall.cfg",
-					"file_size": 4782,
-					"file_write_time": 1335363714000000,
-					"settings":
-					{
-						"buffer_size": 4791,
-						"line_ending": "Unix"
-					}
-				},
-				{
-					"file": "/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-12.04-unity-postinstall.cfg",
-					"settings":
-					{
-						"buffer_size": 4511,
-						"line_ending": "Unix"
-					}
-				}
-			],
 			"build_system": "",
 			"command_palette":
 			{
-				"height": 348.0,
+				"height": 54.0,
 				"selected_items":
 				[
 					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
 						"packa",
-						"Package Control: Install Package"
+						"Preferences: Browse Packages"
 					],
 					[
-						"pac",
-						"Package Control: List Packages"
+						"pack",
+						"Preferences: Package Control Settings – User"
 					],
 					[
-						"pa",
-						"Package Control: Install Package"
+						"Package",
+						"Preferences: Package Control Settings – Default"
 					],
 					[
-						"",
-						"File: Save All"
+						"Pack",
+						"Preferences: Browse Packages"
 					]
 				],
 				"width": 449.0
 			},
 			"console":
 			{
-				"height": 0.0
+				"height": 153.0
 			},
 			"distraction_free":
 			{
@@ -85,14 +59,16 @@
 			},
 			"file_history":
 			[
-				"/home/nicolargo/Dropbox/dev/coffeeshop/helloworld-expressjs/helloworld-expressjs.coffee",
-				"/home/nicolargo/Dropbox/dev/coffeeshop/helloworld-expressjs/helloworld-expressjs.js",
-				"/home/nicolargo/Dropbox/dev/coffeeshop/helloworld/helloworld.coffee",
-				"/home/nicolargo/Dropbox/dev/coffeeshop/helloworld-expressjs/helloworld.coffee"
+				"/home/nicolargo/.config/sublime-text-2/Packages/User/Package Control.sublime-settings",
+				"/home/nicolargo/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+				"/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-13.04-unity-postinstall.cfg",
+				"/home/nicolargo/Bureau/drawing.svg",
+				"/home/nicolargo/Téléchargements/showwordpressversion.user.js",
+				"/home/nicolargo/Téléchargements/instapaper-export.html"
 			],
 			"find":
 			{
-				"height": 0.0
+				"height": 35.0
 			},
 			"find_in_files":
 			{
@@ -120,90 +96,172 @@
 				"whole_word": false,
 				"wrap": true
 			},
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true
+		},
+		"new_window_width": 1279.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 54.0,
+				"selected_items":
+				[
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"packa",
+						"Preferences: Browse Packages"
+					],
+					[
+						"pack",
+						"Preferences: Package Control Settings – User"
+					],
+					[
+						"Package",
+						"Preferences: Package Control Settings – Default"
+					],
+					[
+						"Pack",
+						"Preferences: Browse Packages"
+					]
+				],
+				"width": 449.0
+			},
+			"console":
+			{
+				"height": 153.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/nicolargo/dev/glances/glances/glances.py",
+				"/home/nicolargo/.config/sublime-text-2/Packages/User/Package Control.sublime-settings",
+				"/home/nicolargo/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+				"/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-13.04-unity-postinstall.cfg",
+				"/home/nicolargo/Bureau/drawing.svg",
+				"/home/nicolargo/Téléchargements/showwordpressversion.user.js",
+				"/home/nicolargo/Téléchargements/instapaper-export.html"
+			],
+			"find":
+			{
+				"height": 35.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/home/nicolargo/dev/glances"
+				}
+			],
 			"groups":
 			[
 				{
-					"selected": 2,
 					"sheets":
 					[
-						{
-							"buffer": 0,
-							"file": "/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-12.04-cinnamon-postinstall.cfg",
-							"settings":
-							{
-								"buffer_size": 4686,
-								"regions":
-								{
-								},
-								"selection":
-								[
-									[
-										2646,
-										2646
-									]
-								],
-								"settings":
-								{
-									"syntax": "Packages/Text/Plain text.tmLanguage"
-								},
-								"translation.x": 0.0,
-								"translation.y": 1069.0,
-								"zoom_level": 1.0
-							},
-							"type": "text"
-						},
-						{
-							"buffer": 1,
-							"file": "/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-12.04-gnomeshell-postinstall.cfg",
-							"settings":
-							{
-								"buffer_size": 4791,
-								"regions":
-								{
-								},
-								"selection":
-								[
-									[
-										2624,
-										2752
-									]
-								],
-								"settings":
-								{
-									"syntax": "Packages/Text/Plain text.tmLanguage"
-								},
-								"translation.x": 0.0,
-								"translation.y": 1080.0,
-								"zoom_level": 1.0
-							},
-							"type": "text"
-						},
-						{
-							"buffer": 2,
-							"file": "/home/nicolargo/Dropbox/dev/ubuntupostinstall/ubuntu-12.04-unity-postinstall.cfg",
-							"settings":
-							{
-								"buffer_size": 4511,
-								"regions":
-								{
-								},
-								"selection":
-								[
-									[
-										2441,
-										2441
-									]
-								],
-								"settings":
-								{
-									"syntax": "Packages/Text/Plain text.tmLanguage"
-								},
-								"translation.x": 0.0,
-								"translation.y": 972.0,
-								"zoom_level": 1.0
-							},
-							"type": "text"
-						}
 					]
 				}
 			],
@@ -238,7 +296,7 @@
 				]
 			},
 			"menu_visible": true,
-			"position": "0,0,0,0,0,504,42,1426,727,1440,900",
+			"position": "0,0,0,0,0,143,78,1422,988,1920,1080",
 			"replace":
 			{
 				"height": 0.0
@@ -266,7 +324,7 @@
 			"side_bar_visible": true,
 			"side_bar_width": 150.0,
 			"status_bar_visible": true,
-			"window_id": 1,
+			"window_id": 2,
 			"workspace_name": ""
 		}
 	],
