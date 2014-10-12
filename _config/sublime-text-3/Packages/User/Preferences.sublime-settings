@@ -1,0 +1,56 @@
+{
+	"default_line_ending": "unix",
+	"font_size": 11,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"lint_mode": "background",
+	"linters":
+	{
+		"csslint":
+		{
+			"@disable": false,
+			"args":
+			[
+			],
+			"excludes":
+			[
+			]
+		},
+		"flake8":
+		{
+			"@disable": false,
+			"args":
+			[
+			],
+			"excludes":
+			[
+			],
+			"ignore": "",
+			"max-complexity": -1,
+			"max-line-length": null,
+			"select": ""
+		}
+	},
+	"pep8_ignore":
+	[
+		"E501",
+		"E0602"
+	],
+	"pylinter":
+	{
+		"disable":
+		[
+		],
+		"ignore":
+		[
+			"R",
+			"C"
+		],
+		"message_stay": false
+	},
+	"tab_size": 4,
+	"translate_tabs_to_spaces": true,
+	"update_check": false
+}

@@ -1,0 +1,15 @@
+{
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"Anaconda",
+		"AutoPEP8",
+		"CTags",
+		"Jedi - Python autocompletion",
+		"Pylinter",
+		"SublimeCodeIntel",
+		"SublimeLinter-pep8",
+		"Theme - Soda",
+		"Theme - Spacegray"
+	]
+}
