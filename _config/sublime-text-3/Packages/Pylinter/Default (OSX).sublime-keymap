@@ -1,6 +1,0 @@
-[
-	{ "keys": ["super+alt+z"], "command": "pylinter"},
-    { "keys": ["super+alt+x"], "command": "pylinter", "args": {"action": "toggle"} },
-    { "keys": ["super+alt+c"], "command": "pylinter", "args": {"action": "list"} },
-    { "keys": ["super+alt+i"], "command": "pylinter", "args": {"action": "ignore"} }
-]
