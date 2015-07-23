@@ -1,3 +1,0 @@
-[
-	{ "keys": ["ctrl+super+8"], "command": "flake8_lint" }
-]
