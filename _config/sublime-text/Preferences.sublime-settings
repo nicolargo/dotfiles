@@ -1,0 +1,13 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by file type specific settings.
+{
+    "font_face": "Ubuntu Mono",
+    "font_options": "subpixel_antialias",
+    "font_size": 14,
+    "tab_size": 4,
+    "tab_completion": false,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "vintage_start_in_command_mode": true,
+    "pep8_ignore": [ "E501", "E402", "E265", "E302", "E221", "E222"]
+}
