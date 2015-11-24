@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH="$HOME/bin:$PATH"
+PATH="$HOME:/stremio:$HOME/bin:$PATH"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -54,7 +54,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Virtualenv wrapper
 export WORKON_HOME=~/virtualenvs
 mkdir -p $WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -64,11 +64,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Defined prompt only if is not already defined
+function _update_ps1() {
+   PS1="$(~/dev/powerline-shell/powerline-shell.py $? 2> /dev/null)"
+}
+
 if [ ! -z "$PS1" ]; then
-        if [ -r ~/.bashrc.d/bashrc_prompt ]; then
-	        source ~/dev/liquidprompt/liquidprompt
+        if [ -r ~/dev/powerline-shell/powerline-shell.py ]; then
+            if [ "$TERM" != "linux" ]; then
+                PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+            fi
+        elif [ -r ~/dev/liquidprompt/liquidprompt ]; then
+            source ~/dev/liquidprompt/liquidprompt
         elif [ -r ~/.bashrc.d/bashrc_prompt ]; then
-                source ~/.bashrc.d/bashrc_prompt
+            source ~/.bashrc.d/bashrc_prompt
 	fi
 fi
 
